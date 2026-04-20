@@ -1,7 +1,6 @@
 # Smart Grid
 
 ![Status](https://img.shields.io/badge/status-em%20desenvolvimento-yellow)
-![License](https://img.shields.io/badge/license-MIT-blue)
 ![Language](https://img.shields.io/badge/language-Java-orange)
 
 > Sistema local de Smart Grid para monitoramento de energia em residências, com arquitetura distribuída baseada em sockets TCP.
@@ -16,14 +15,15 @@ O projeto foi modelado com uma arquitetura distribuída baseada em **comunicaç�
 
 ## Funcionalidades
 
-- Medição do consumo energético mensal.
-- Medição em tempo real do consumo de dispositivos conectados a qualquer tomada.
+<!-- - Medição do consumo energético mensal.-->
+<!-- - Medição em tempo real do consumo de dispositivos conectados a qualquer tomada.-->
 - Coleta de métricas elétricas detalhadas:
   - Tensão
   - Corrente
   - Fator de Potência
 - Disponibilização dos dados via servidor para qualquer cliente/usuário na mesma rede local.
 - Comunicação entre nós por meio de sockets TCP.
+>Observação: Ocorrerá possíveis alterações nesse processo
 - Serialização e troca de objetos de domínio entre cliente, servidor e controlador.
 
 ## Arquitetura do Sistema
@@ -55,8 +55,7 @@ Na implementação atual, ele simula o comportamento de um ESP ou controlador em
 O projeto utiliza classes POJO para representar os dados trafegados na rede:
 
 - **`Comando`**: representa a solicitação enviada pelo cliente ao servidor e também o comando repassado do servidor ao ESP.  
-  > Observação: essa dinâmica pode ser refatorada futuramente para melhorar a separação entre as responsabilidades.
-
+  
 - **`Medicao`**: representa os dados coletados, incluindo informações como tensão, corrente, potência e fator de potência.
 
 - **Serviço de Medição**: responsável pelos cálculos elétricos, como o cálculo de potência a partir dos parâmetros medidos.
@@ -69,7 +68,7 @@ Essa abordagem permite:
 
 - enviar objetos de forma estruturada entre processos distintos;
 - manter a comunicação organizada dentro da rede local;
-- facilitar a evolução futura para uma solução com hardware real.
+- facilitar a evolução futura.
 
 ## Pré-requisitos
 
@@ -86,31 +85,30 @@ Antes de executar o projeto, verifique se o ambiente possui:
 
 ### 1. Clone o repositório
 ```bash
-git clone https://github.com/seu-usuario/smart-grid.git
-cd smart-grid
+git clone https://github.com/Jean-Morais/Smart-Grid.git
+cd Smart-Grid
 ```
 
 ### 2. Compile o projeto
 ```bash
-javac -d out src/**/*.java
+javac -d out src/main/**/*.java
 ```
 
 ### 3. Inicie o servidor simulado
 ```bash
-java -cp out main.java.servidor.ServerSimulator
+java -cp out main.entidade.ServerSimulator
 ```
 
-### 4. Inicie o ESP simulado
+### 4. Em outro terminal inicie o ESP simulado
 ```bash
-java -cp out main.java.esp.EspSimulator
+java -cp out main.entidade.EspSimulator
 ```
 
-### 5. Execute o cliente TCP
+### 5. E em outro execute o cliente TCP
 ```bash
-java -cp out main.java.cliente.ClientTCP
+java -cp out main.entidade.ClienteTCP
 ```
 
-> Observação: os nomes das classes principais podem variar conforme a estrutura real do projeto.
 
 ## Exemplo de Uso
 
@@ -118,11 +116,12 @@ Após iniciar os processos, o cliente pode solicitar medições, consultar consu
 
 Exemplo de interação esperada:
 
-- Cliente solicita dados energéticos.
+- Cliente solicita dados energéticos através do comando informado no sistema.
 - Servidor processa a requisição.
 - ESP simulado retorna a medição.
 - Cliente recebe a resposta com os valores coletados.
 
+<!--
 ## Próximos Passos / Roadmap
 
 - Substituir a simulação por **hardware real**.
@@ -132,6 +131,7 @@ Exemplo de interação esperada:
 - Melhorar a persistência dos dados para histórico de consumo.
 - Adicionar interface visual para consulta e análise das medições.
 - Possibilitar autenticação de usuários na rede local.
+-->
 
 ## Tecnologias Utilizadas
 
@@ -141,24 +141,20 @@ Exemplo de interação esperada:
 - **Serialização de objetos**
 - **Programação Orientada a Objetos**
 
-## Organização Esperada do Projeto
+## Organização Atual do Projeto
 
 ```text
-smart-grid/
+Smart-Grid/
 ├── src/
-│   ├── cliente/
-│   ├── servidor/
-│   ├── esp/
-│   ├── entidade/
-│   └── streams/
+│   └── main/
+│       ├── entidades/
+│       ├── services/
+│       ├── streams/
+│       └── testes/
 ├── out/
 └── README.md
 ```
 
-## Licença
-
-Este projeto está licenciado sob a licença **MIT**. Consulte o arquivo `LICENSE` para mais detalhes.
-
 ---
 
-Projeto desenvolvido para fins acadêmicos e de estudo em **IoT, Redes e Sistemas Distribuídos**.
+Projeto desenvolvido para fins acadêmicos e de estudo em **Redes e Sistemas Distribuídos**.
