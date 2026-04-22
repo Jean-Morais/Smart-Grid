@@ -158,3 +158,7 @@ Smart-Grid/
 ---
 
 Projeto desenvolvido para fins acadêmicos e de estudo em **Redes e Sistemas Distribuídos**.
+
+##Contribuidores
+Jean Morais da Silva
+João Pedro Holanda Amorim
