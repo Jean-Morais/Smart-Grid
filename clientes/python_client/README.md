@@ -9,9 +9,9 @@ Cliente de terminal para consumir a API REST do servidor Spring Boot.
 ## Como executar
 
 ```bash
-python main.py
-python main.py 192.168.1.10
-python main.py 192.168.1.10 9090
+python3 main.py
+python3 main.py 192.168.1.10
+python3 main.py 192.168.1.10 8080
 ```
 
 ## Endpoints usados

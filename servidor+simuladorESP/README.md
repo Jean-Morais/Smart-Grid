@@ -8,7 +8,6 @@ Projeto Spring Boot com MQTT para simulação de controladoras ESP.
 - servidor MQTT publicando comandos por tópico específico
 - simulador de ESP em Java publicando telemetria por tópico específico
 - simulador Java com múltiplos ESPs no mesmo processo
-- sem mock de dados; a leitura agora vem do MQTT
 - suporte para rodar no IntelliJ com uma execução separada para o servidor e outra para o simulador
 
 ## Convenção de tópicos
@@ -89,8 +88,3 @@ No Windows, troque `:` por `;`.
 ## Observação importante
 
 A aplicação do servidor depende do Mosquitto ativo. Se o broker não estiver rodando, o Spring Boot sobe, mas a camada MQTT não consegue se conectar até o broker ficar disponível.
-
-
-## Compatibilidade
-
-A versão nova ainda aceita o modo antigo de um único ESP por execução, mas agora o padrão é simular vários controladores ao mesmo tempo.
